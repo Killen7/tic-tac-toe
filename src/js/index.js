@@ -1,5 +1,5 @@
 //import react into the bundle
-import React, { useState } from "react";
+import React from "react";
 import ReactDOM from "react-dom";
 
 //include bootstrap npm library into the bundle
@@ -9,17 +9,8 @@ import "bootstrap";
 import "../styles/index.scss";
 
 //import your own components
-import { Juego } from "./component/juego.js";
-import { Intro } from "./component/intro.js";
-
-const [Listo, setListo] = useState(false);
-const empezar = () => {
-	setListo(true);
-};
+import { Home } from "./component/home";
 
 //render your react application
 
-ReactDOM.render(
-	Listo ? <Juego /> : <Intro empezar={empezar} />,
-	document.querySelector("#app")
-);
+ReactDOM.render(<Home />, document.querySelector("#app"));

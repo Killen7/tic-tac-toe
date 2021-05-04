@@ -1,6 +1,7 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 //create your first component
-export function Juego() {
+export function Juego(props) {
 	const [tablero, setTablero] = useState([
 		"",
 		"",
@@ -17,47 +18,40 @@ export function Juego() {
 		["", "", ""], //[1][0] - [1][1] - [1][2]
 		["", "", ""] //[2][0] - [2][1] - [2][2]
 	]); */
-	const [armaActual, setArmaActual] = useState("X");
-
-	const cambiarArma = () => {
-		if (armaActual === "X") {
-			setArmaActual("O");
-		} else if (armaActual === "O") {
-			setArmaActual("X");
-		}
-	};
 
 	const jugada = posicion => {
 		let tableroAux = [...tablero];
-		tableroAux[posicion] = armaActual;
+		tableroAux[posicion] = props.armaActual;
 		setTablero(tableroAux);
-		verificarGanador();
+		verificarGanador(tableroAux);
 	};
 
-	const [ganador, setGanador] = useState(false);
+	const [ganador, setGanador] = useState("");
 
-	const verificarGanador = () => {
-		if (ganador == false) {
-			for (let i = 0; i < tablero.length; i = i + 3) {
-				console.log(i);
+	const verificarGanador = tab => {
+		if (ganador == "") {
+			for (let i = 0; i < tab.length; i = i + 3) {
 				if (
-					tablero[i] == tablero[i + 1] &&
-					tablero[i + 1] == tablero[i + 2] &&
-					tablero[i] != ""
-				) {
-					setGanador(true);
-				}
-			}
-			for (let i = 0; i < 3; i++)
-				if (
-					(tablero[i] == tablero[i + 3]) == tablero[i + 6] &&
-					tablero[i] != ""
+					tab[i] == tab[i + 1] &&
+					tab[i + 1] == tab[i + 2] &&
+					tab[i] != ""
 				)
-					setGanador(true);
-			if ((tablero[0] == tablero[4]) == tablero[8] && tablero[0] != "")
-				setGanador(true);
-			if ((tablero[2] == tablero[4]) == tablero[6] && tablero[2] != "")
-				setGanador(true);
+					setGanador(props.armaActual);
+			}
+			for (let i = 0; i < tab.length; i++) {
+				if (
+					tab[i] == tab[i + 3] &&
+					tab[i + 3] == tab[i + 6] &&
+					tab[i] != ""
+				)
+					setGanador(props.armaActual);
+			}
+			if (tab[0] == tab[4] && tab[4] == tab[8] && tab[0] != "") {
+				setGanador(props.armaActual);
+			}
+			if (tab[2] == tab[4] && tab[4] == tab[6] && tab[2] != "") {
+				setGanador(props.armaActual);
+			}
 		}
 	};
 
@@ -80,25 +74,24 @@ export function Juego() {
 			</div>
 			<div className="row flex-row d-flex justify-content-center">
 				<div className="m-2 texto">
-					<h2>turno de {armaActual}</h2>
+					<h2>turno de {props.armaActual}</h2>
 				</div>
 			</div>
 			<div className="row flex-row d-flex justify-content-center">
 				<div
 					className="m-2 cajita p-2 d-flex justify-content-center align-items-center"
 					onClick={() => {
-						caja0 == "" ? setCaja0(armaActual) : caja0;
-						cambiarArma();
+						caja0 == "" ? setCaja0(props.armaActual) : caja0;
+						props.cambiarArma();
 						jugada(0);
-						if (ganador) alert("hay un ganador");
 					}}>
 					<h1 className="marcas">{caja0}</h1>
 				</div>
 				<div
 					className="m-2 cajita p-2 d-flex justify-content-center align-items-center"
 					onClick={() => {
-						caja1 == "" ? setCaja1(armaActual) : caja1;
-						cambiarArma();
+						caja1 == "" ? setCaja1(props.armaActual) : caja1;
+						props.cambiarArma();
 						jugada(1);
 					}}>
 					<h1 className="marcas">{caja1}</h1>
@@ -106,8 +99,8 @@ export function Juego() {
 				<div
 					className="m-2 cajita p-2 d-flex justify-content-center align-items-center"
 					onClick={() => {
-						caja2 == "" ? setCaja2(armaActual) : caja2;
-						cambiarArma();
+						caja2 == "" ? setCaja2(props.armaActual) : caja2;
+						props.cambiarArma();
 						jugada(2);
 					}}>
 					<h1 className="marcas">{caja2}</h1>
@@ -117,8 +110,8 @@ export function Juego() {
 				<div
 					className="m-2 cajita p-2 d-flex justify-content-center align-items-center"
 					onClick={() => {
-						caja3 == "" ? setCaja3(armaActual) : caja3;
-						cambiarArma();
+						caja3 == "" ? setCaja3(props.armaActual) : caja3;
+						props.cambiarArma();
 						jugada(3);
 					}}>
 					<h1 className="marcas">{caja3}</h1>
@@ -126,8 +119,8 @@ export function Juego() {
 				<div
 					className="m-2 cajita p-2 d-flex justify-content-center align-items-center"
 					onClick={() => {
-						caja4 == "" ? setCaja4(armaActual) : caja4;
-						cambiarArma();
+						caja4 == "" ? setCaja4(props.armaActual) : caja4;
+						props.cambiarArma();
 						jugada(4);
 					}}>
 					<h1 className="marcas">{caja4}</h1>
@@ -135,8 +128,8 @@ export function Juego() {
 				<div
 					className="m-2 cajita p-2 d-flex justify-content-center align-items-center"
 					onClick={() => {
-						caja5 == "" ? setCaja5(armaActual) : caja5;
-						cambiarArma();
+						caja5 == "" ? setCaja5(props.armaActual) : caja5;
+						props.cambiarArma();
 						jugada(5);
 					}}>
 					<h1 className="marcas">{caja5}</h1>
@@ -146,8 +139,8 @@ export function Juego() {
 				<div
 					className="m-2 cajita p-2 d-flex justify-content-center align-items-center"
 					onClick={() => {
-						caja6 == "" ? setCaja6(armaActual) : caja6;
-						cambiarArma();
+						caja6 == "" ? setCaja6(props.armaActual) : caja6;
+						props.cambiarArma();
 						jugada(6);
 					}}>
 					<h1 className="marcas">{caja6}</h1>
@@ -155,8 +148,8 @@ export function Juego() {
 				<div
 					className="m-2 cajita p-2 d-flex justify-content-center align-items-center"
 					onClick={() => {
-						caja7 == "" ? setCaja7(armaActual) : caja7;
-						cambiarArma();
+						caja7 == "" ? setCaja7(props.armaActual) : caja7;
+						props.cambiarArma();
 						jugada(7);
 					}}>
 					<h1 className="marcas"> {caja7}</h1>
@@ -164,8 +157,8 @@ export function Juego() {
 				<div
 					className="m-2 cajita p-2 d-flex justify-content-center align-items-center"
 					onClick={() => {
-						caja8 == "" ? setCaja8(armaActual) : caja8;
-						cambiarArma();
+						caja8 == "" ? setCaja8(props.armaActual) : caja8;
+						props.cambiarArma();
 						jugada(8);
 					}}>
 					<h1 className="marcas">{caja8}</h1>
@@ -174,3 +167,8 @@ export function Juego() {
 		</div>
 	);
 }
+
+Juego.propTypes = {
+	armaActual: PropTypes.string,
+	cambiarArma: PropTypes.func
+};
