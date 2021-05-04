@@ -30,7 +30,7 @@ export function Home() {
 			{listo ? (
 				<Juego armaActual={armaActual} cambiarArma={cambiarArma} />
 			) : (
-				<Intro ComienzaX={comienzaX} ComienzaO={comienzaO} />
+				<Intro comienzaX={comienzaX} comienzaO={comienzaO} />
 			)}
 		</div>
 	);

@@ -55,6 +55,12 @@ export function Juego(props) {
 		}
 	};
 
+	const anunciarGanador = () => {
+		if (ganador != "") {
+			alert("El ganador es " + ganador);
+		}
+	};
+
 	const [caja0, setCaja0] = useState("");
 	const [caja1, setCaja1] = useState("");
 	const [caja2, setCaja2] = useState("");
@@ -81,27 +87,39 @@ export function Juego(props) {
 				<div
 					className="m-2 cajita p-2 d-flex justify-content-center align-items-center"
 					onClick={() => {
-						caja0 == "" ? setCaja0(props.armaActual) : caja0;
-						props.cambiarArma();
-						jugada(0);
+						if (ganador == "") {
+							caja0 == "" ? setCaja0(props.armaActual) : caja0;
+							props.cambiarArma();
+							jugada(0);
+						} else {
+							anunciarGanador();
+						}
 					}}>
 					<h1 className="marcas">{caja0}</h1>
 				</div>
 				<div
 					className="m-2 cajita p-2 d-flex justify-content-center align-items-center"
 					onClick={() => {
-						caja1 == "" ? setCaja1(props.armaActual) : caja1;
-						props.cambiarArma();
-						jugada(1);
+						if (ganador == "") {
+							caja1 == "" ? setCaja1(props.armaActual) : caja1;
+							props.cambiarArma();
+							jugada(1);
+						} else {
+							anunciarGanador();
+						}
 					}}>
 					<h1 className="marcas">{caja1}</h1>
 				</div>
 				<div
 					className="m-2 cajita p-2 d-flex justify-content-center align-items-center"
 					onClick={() => {
-						caja2 == "" ? setCaja2(props.armaActual) : caja2;
-						props.cambiarArma();
-						jugada(2);
+						if (ganador == "") {
+							caja2 == "" ? setCaja2(props.armaActual) : caja2;
+							props.cambiarArma();
+							jugada(2);
+						} else {
+							anunciarGanador();
+						}
 					}}>
 					<h1 className="marcas">{caja2}</h1>
 				</div>
@@ -110,27 +128,39 @@ export function Juego(props) {
 				<div
 					className="m-2 cajita p-2 d-flex justify-content-center align-items-center"
 					onClick={() => {
-						caja3 == "" ? setCaja3(props.armaActual) : caja3;
-						props.cambiarArma();
-						jugada(3);
+						if (ganador == "") {
+							caja3 == "" ? setCaja3(props.armaActual) : caja3;
+							props.cambiarArma();
+							jugada(3);
+						} else {
+							anunciarGanador();
+						}
 					}}>
 					<h1 className="marcas">{caja3}</h1>
 				</div>
 				<div
 					className="m-2 cajita p-2 d-flex justify-content-center align-items-center"
 					onClick={() => {
-						caja4 == "" ? setCaja4(props.armaActual) : caja4;
-						props.cambiarArma();
-						jugada(4);
+						if (ganador == "") {
+							caja4 == "" ? setCaja4(props.armaActual) : caja4;
+							props.cambiarArma();
+							jugada(4);
+						} else {
+							anunciarGanador();
+						}
 					}}>
 					<h1 className="marcas">{caja4}</h1>
 				</div>
 				<div
 					className="m-2 cajita p-2 d-flex justify-content-center align-items-center"
 					onClick={() => {
-						caja5 == "" ? setCaja5(props.armaActual) : caja5;
-						props.cambiarArma();
-						jugada(5);
+						if (ganador == "") {
+							caja5 == "" ? setCaja5(props.armaActual) : caja5;
+							props.cambiarArma();
+							jugada(5);
+						} else {
+							anunciarGanador();
+						}
 					}}>
 					<h1 className="marcas">{caja5}</h1>
 				</div>
@@ -139,27 +169,39 @@ export function Juego(props) {
 				<div
 					className="m-2 cajita p-2 d-flex justify-content-center align-items-center"
 					onClick={() => {
-						caja6 == "" ? setCaja6(props.armaActual) : caja6;
-						props.cambiarArma();
-						jugada(6);
+						if (ganador == "") {
+							caja6 == "" ? setCaja6(props.armaActual) : caja6;
+							props.cambiarArma();
+							jugada(6);
+						} else {
+							anunciarGanador();
+						}
 					}}>
 					<h1 className="marcas">{caja6}</h1>
 				</div>
 				<div
 					className="m-2 cajita p-2 d-flex justify-content-center align-items-center"
 					onClick={() => {
-						caja7 == "" ? setCaja7(props.armaActual) : caja7;
-						props.cambiarArma();
-						jugada(7);
+						if (ganador == "") {
+							caja7 == "" ? setCaja7(props.armaActual) : caja7;
+							props.cambiarArma();
+							jugada(7);
+						} else {
+							anunciarGanador();
+						}
 					}}>
 					<h1 className="marcas"> {caja7}</h1>
 				</div>
 				<div
 					className="m-2 cajita p-2 d-flex justify-content-center align-items-center"
 					onClick={() => {
-						caja8 == "" ? setCaja8(props.armaActual) : caja8;
-						props.cambiarArma();
-						jugada(8);
+						if (ganador == "") {
+							caja8 == "" ? setCaja8(props.armaActual) : caja8;
+							props.cambiarArma();
+							jugada(8);
+						} else {
+							anunciarGanador();
+						}
 					}}>
 					<h1 className="marcas">{caja8}</h1>
 				</div>
